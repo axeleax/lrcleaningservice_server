@@ -10,7 +10,7 @@ const express = require("express"),
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
-const allowedOrigins = ['http://localhost','http://localhost:4200','http://35.226.101.166','http://35.226.101.166:80'];
+const allowedOrigins = ['http://localhost','http://localhost:4200','https://www.lrcleaningservice.us'];
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
