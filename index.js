@@ -46,8 +46,8 @@ app.use(router);
 //});
 
 var options = {
-  key: fs.readFileSync('privatekey.pem'),
-  cert: fs.readFileSync('certrequest.csr')
+  key: fs.readFileSync('./privatekey.pem'),
+  cert: fs.readFileSync('./certrequest.csr')
 };
 
 // Create an HTTP service.
