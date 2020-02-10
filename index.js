@@ -51,11 +51,11 @@ var options = {
 };
 
 // Create an HTTP service.
-http.createServer(app).listen(PORT, HOST, function() {
+https.createServer(app).listen(PORT, HOST, function() {
   console.log(`Running on http://${HOST}:${PORT}`);
 });
 // Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(444);
+//https.createServer(options, app).listen(444);
 
 
 
