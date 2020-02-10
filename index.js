@@ -45,20 +45,13 @@ app.use(router);
 //  console.log(`Running on http://${HOST}:${PORT}`);
 //});
 
-var options = {
-  key: fs.readFileSync('./privatekey.pem'),
-  cert: fs.readFileSync('./certrequest.csr')
-};
-
-// Create an HTTP service.
-https.createServer(app).listen(PORT, HOST, function() {
+https.createServer({
+  key: fs.readFileSync('privatekey.pem'),
+  cert: fs.readFileSync('certrequest.csr')
+}, app)
+.listen(PORT, HOST, function () {
   console.log(`Running on http://${HOST}:${PORT}`);
-});
-// Create an HTTPS service identical to the HTTP service.
-//https.createServer(options, app).listen(444);
-
-
-
+})
 
 
 
