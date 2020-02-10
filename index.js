@@ -5,6 +5,7 @@ const express = require("express"),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override"),
     fs = require('fs'),
+    http = require('http'),
     https = require('https'),
     app = express(),
     email = require('./email');
@@ -46,8 +47,8 @@ app.use(router);
 //  console.log(`Running on http://${HOST}:${PORT}`);
 //});
 
-var privateKey  = fs.readFileSync('privatekey.pem', 'utf8');
-var certificate = fs.readFileSync('certrequest.csr', 'utf8');
+var privateKey  = fs.readFileSync('server.key', 'utf8');
+var certificate = fs.readFileSync('server.cert', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
 var httpServer = http.createServer(app);
