@@ -4,6 +4,8 @@ const express = require("express"),
     cors = require('cors'),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override"),
+    fs = require('fs'),
+    https = require('https'),
     app = express(),
     email = require('./email');
 
@@ -39,11 +41,19 @@ router.post('/send', function(req, res) {
 
 app.use(router);
 
-app.listen(PORT, HOST, function() {
-  console.log(`Running on http://${HOST}:${PORT}`);
-});
+//app.listen(PORT, HOST, function() {
+//  console.log(`Running on http://${HOST}:${PORT}`);
+//});
 
+var options = {
+  key: fs.readFileSync('privatekey.pem'),
+  cert: fs.readFileSync('certrequest.csr')
+};
 
+// Create an HTTP service.
+http.createServer(app).listen(80);
+// Create an HTTPS service identical to the HTTP service.
+https.createServer(options, app).listen(443);
 
 
 
