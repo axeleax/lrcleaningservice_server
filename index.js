@@ -13,7 +13,6 @@ const express = require("express"),
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
-const SSL_PORT = 8443;
 const allowedOrigins = ['http://localhost','http://localhost:4200','https://www.lrcleaningservice.us'];
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,11 +50,10 @@ var privateKey  = fs.readFileSync('server.key', 'utf8');
 var certificate = fs.readFileSync('server.cert', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
-var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
-
-httpServer.listen(PORT, HOST);
-httpsServer.listen(SSL_PORT, HOST);
+httpsServer.listen(PORT, HOST, function() {
+  console.log(`Running on http://${HOST}:${PORT}`);
+});
 
 
 
