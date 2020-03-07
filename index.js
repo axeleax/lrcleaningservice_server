@@ -47,8 +47,8 @@ app.use(router);
 //});
 
 var privateKey  = fs.readFileSync('privkey.pem', 'utf8');
-var certificate = fs.readFileSync('fullchain.pem', 'utf8');
-var chain = fs.readFileSync('chain.pem','utf8');
+var certificate = fs.readFileSync('cert.pem', 'utf8');
+var chain = fs.readFileSync('fullchain.pem','utf8');
 var credentials = {key: privateKey, cert: certificate, ca: chain};
 
 var httpsServer = https.createServer(credentials, app);
