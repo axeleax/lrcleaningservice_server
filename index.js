@@ -48,7 +48,8 @@ app.use(router);
 
 var privateKey  = fs.readFileSync('/etc/letsencrypt/live/lrcleaningservice.us/privkey.pem', 'utf8');
 var certificate = fs.readFileSync('/etc/letsencrypt/live/lrcleaningservice.us/fullchain.pem', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
+var chain = fs.readFileSync('/etc/letsencrypt/live/www.mysite.com/chain.pem','utf8');
+var credentials = {key: privateKey, cert: certificate, ca: chain};
 
 var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(PORT, HOST, function() {
