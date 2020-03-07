@@ -13,7 +13,7 @@ const express = require("express"),
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
-const allowedOrigins = ['http://localhost','http://localhost:4200','https://lrcleaningservice.us', "https://www.lrcleaningservice.us"];
+const allowedOrigins = ['http://localhost','http://localhost:4200','https://lrcleaningservice.us'];
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -46,9 +46,9 @@ app.use(router);
 //  console.log(`Running on http://${HOST}:${PORT}`);
 //});
 
-var privateKey  = fs.readFileSync('privkey.pem');
-var certificate = fs.readFileSync('fullchain.pem');
-var chain = fs.readFileSync('chain.pem');
+var privateKey  = fs.readFileSync('privkey.pem', 'utf8');
+var certificate = fs.readFileSync('fullchain.pem', 'utf8');
+var chain = fs.readFileSync('chain.pem','utf8');
 var credentials = {key: privateKey, cert: certificate, ca: chain};
 
 var httpsServer = https.createServer(credentials, app);
