@@ -46,8 +46,8 @@ app.use(router);
 //  console.log(`Running on http://${HOST}:${PORT}`);
 //});
 
-var privateKey  = fs.readFileSync('server.key', 'utf8');
-var certificate = fs.readFileSync('server.cert', 'utf8');
+var privateKey  = fs.readFileSync('/etc/letsencrypt/live/lrcleaningservice.us/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/lrcleaningservice.us/fullchain.pem', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
 var httpsServer = https.createServer(credentials, app);
